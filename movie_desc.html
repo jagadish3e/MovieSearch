@@ -1,0 +1,305 @@
+<!--
+<style>
+
+table { 
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+</style>
+-->
+
+
+<a ui-sref="home()" class="btn btn-danger">Back</a>
+
+<div class="jumbotron text-center" ng-controller="descCtrl" style="background-color:palegoldenrod">
+
+    <div class="row">
+        
+    <div class="col-md-4">
+        <img class="img-responsive" src="{{poster}}"/><br/>
+        <h3><b>MOVIE FACTS</b></h3><br/>
+        <div style="text-align:left"><b>Run Time :</b> {{original}}</div>
+        <div style="text-align:left"><b>Release Info :</b> {{release}}</div>
+        <div style="text-align:left"><b>Status :</b> {{status}}</div>
+        <div style="text-align:left"><b>Budget :</b> ${{budget}}</div>
+        <div style="text-align:left"><b>Language :</b> {{language}}</div>
+        <div style="text-align:left"><b>Popularity :</b> {{popularity}}</div>
+        <div style="text-align:left"><b>Revenue :</b> ${{revenue}}</div>
+        <div style="text-align:left"><b>Adult :</b> {{adult}}</div>
+        <div style="text-align:left"><b>IMDB Link :</b><a href="http://www.imdb.com/title/{{imdbId}}">Link</a></div>
+        <div style="text-align:left"><b>WebPage :</b><a href="{{homepage}}">Link</a></div>
+        
+        </div>
+        
+        <div class="col-md-8">
+          <div >
+              <h3 style="color:green">{{movieTitle}}({{release}})</h3>
+              <h5 style="float:center"><b>Rating : {{vote}}/10</b></h5>
+              <h4 style="float:left"><b>Overview</b></h4><br/><br/>
+              <p>{{overview}}</p>
+              <h4 style="float:left"><b>Crew</b></h4><br/>
+              <table border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                    <td><b>&nbsp;Director:&nbsp;&nbsp;&nbsp;</b></td>
+                    <td ng-repeat="cc in Directing">{{cc.name}}</td>
+                  
+                  </tr>
+                 
+                  <tr>
+                      <td><b>Writers:&nbsp;&nbsp;&nbsp;</b></td>
+                      
+                  <td ng-repeat="cd in writing" ng-if="$index < 3">
+                      <div></div>&nbsp;{{cd.name}}&nbsp;&nbsp;&nbsp;</td>
+                  </tr>
+                  
+                  
+                </tbody>
+              <!--<div class="row">
+              <div class="col-md-3">
+                  <b>Writers:&nbsp;&nbsp;</b>
+                  </div>
+                  <div class="col-md-9">
+                      <span ng-repeat="cd in writing" ng-if="$index < 3">
+                      {{cd.name}}
+                      </span>
+                  </div>
+              </div>-->
+              
+              
+              
+              
+              </table>
+              <a role = "button" ng-click="showChar()" style="float:left">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+              Show all
+              </a><br/>
+              
+              <div class="row" id="show1" style="display:none;">
+                  <h4 style="text-align:left;color:black;border-bottom: 2px solid #ccc;"><b>&nbsp;&nbsp;&nbsp;&nbsp;Writing</b></h4>
+                  
+                  <table border="0" style="border-spacing: 20px;border-collapse: separate;">
+                      <th style="text-align:left;font-size:18px;"><b>Name</b></th>
+                      <th style="text-align:left;font-size:18px;"><b>Job</b></th>
+                  <tr ng-repeat="cc in writing" >
+                     
+                      <td style="text-align:left">{{cc.name}}</td>
+                      <td style="text-align:left">{{cc.job}}</td>
+                  </tr>
+              </table>
+                  
+                  
+                  <h4 style="text-align:left;color:black;border-bottom: 2px solid #ccc;"><b>&nbsp;&nbsp;&nbsp;&nbsp;Directing</b></h4>
+                  
+                  <table border="0" style="border-spacing: 20px;border-collapse: separate;">
+                      <th style="text-align:left;font-size:18px;"><b>Name</b></th>
+                      <th style="text-align:left;font-size:18px;"><b>Job</b></th>
+                  <tr ng-repeat="cc in Directing" >
+                     
+                      <td style="text-align:left">{{cc.name}}</td>
+                      <td style="text-align:left">{{cc.job}}</td>
+                  </tr>
+              </table>
+                  
+                  
+                  
+                  <h4 style="text-align:left;color:black;border-bottom: 2px solid #ccc;"><b>&nbsp;&nbsp;&nbsp;&nbsp;Production</b></h4>
+                  
+                  <table border="0" style="border-spacing: 20px;border-collapse: separate;">
+                      <th style="text-align:left;font-size:18px;"><b>Name</b></th>
+                      <th style="text-align:left;font-size:18px;"><b>Job</b></th>
+                  <tr ng-repeat="cc in production" >
+                     
+                      <td style="text-align:left">{{cc.name}}</td>
+                      <td style="text-align:left">{{cc.job}}</td>
+                  </tr>
+              </table>
+                  
+                  
+                  
+                  <h4 style="text-align:left;color:black;border-bottom: 2px solid #ccc;"><b>&nbsp;&nbsp;&nbsp;&nbsp;Camera</b></h4>
+                  
+                  <table border="0" style="border-spacing: 20px;border-collapse: separate;">
+                      <th style="text-align:left;font-size:18px;"><b>Name</b></th>
+                      <th style="text-align:left;font-size:18px;"><b>Job</b></th>
+                  <tr ng-repeat="cc in camera" >
+                     
+                      <td style="text-align:left">{{cc.name}}</td>
+                      <td style="text-align:left">{{cc.job}}</td>
+                  </tr>
+              </table>
+                  
+                  
+                  
+                  <h4 style="text-align:left;color:black;border-bottom: 2px solid #ccc;"><b>&nbsp;&nbsp;&nbsp;&nbsp;Sound</b></h4>
+                  
+                  <table border="0" style="border-spacing: 20px;border-collapse: separate;">
+                      <th style="text-align:left;font-size:18px;"><b>Name</b></th>
+                      <th style="text-align:left;font-size:18px;"><b>Job</b></th>
+                  <tr ng-repeat="cc in sound" >
+                     
+                      <td style="text-align:left">{{cc.name}}</td>
+                      <td style="text-align:left">{{cc.job}}</td>
+                  </tr>
+              </table>
+                  <h4 style="text-align:left;color:black;border-bottom: 2px solid #ccc;"><b>&nbsp;&nbsp;&nbsp;&nbsp;Editing</b></h4>
+                  
+                  <table border="0" style="border-spacing: 20px;border-collapse: separate;">
+                      <th style="text-align:left;font-size:18px;"><b>Name</b></th>
+                      <th style="text-align:left;font-size:18px;"><b>Job</b></th>
+                  <tr ng-repeat="cc in editing" >
+                     
+                      <td style="text-align:left">{{cc.name}}</td>
+                      <td style="text-align:left">{{cc.job}}</td>
+                  </tr>
+              </table>
+                  
+                  <h4 style="text-align:left;color:black;border-bottom: 2px solid #ccc;"><b>&nbsp;&nbsp;&nbsp;&nbsp;Art</b></h4>
+                  
+                  <table border="0" style="border-spacing: 20px;border-collapse: separate;">
+                      <th style="text-align:left;font-size:18px;"><b>Name</b></th>
+                      <th style="text-align:left;font-size:18px;"><b>Job</b></th>
+                  <tr ng-repeat="cc in art" >
+                     
+                      <td style="text-align:left">{{cc.name}}</td>
+                      <td style="text-align:left">{{cc.job}}</td>
+                  </tr>
+              </table>
+                  
+                  <h4 style="text-align:left;color:black;border-bottom: 2px solid #ccc;"><b>&nbsp;&nbsp;&nbsp;&nbsp;Crew</b></h4>
+                  
+                  <table border="0" style="border-spacing: 20px;border-collapse: separate;">
+                      <th style="text-align:left;font-size:18px;"><b>Name</b></th>
+                      <th style="text-align:left;font-size:18px;"><b>Job</b></th>
+                  <tr ng-repeat="cc in cre" >
+                     
+                      <td style="text-align:left">{{cc.name}}</td>
+                      <td style="text-align:left">{{cc.job}}</td>
+                  </tr>
+              </table>
+                  
+                  
+              <!--<span  ng-repeat="cc in writing">
+                  {{cc.name}}&nbsp;&nbsp;
+                  </span>-->
+                   
+              </div>
+              
+              
+              
+              
+              <br/>
+              
+              
+              
+              <h4 style="float:left"><b>Cast</b></h4>
+              <table border="0">
+              <tbody>
+                
+                 
+                  
+                      
+                      
+                  <tr ng-repeat="cd in cast" ng-if="$index < 4">
+                      <td style="text-align:left"><a href="#" ui-sref="cast_desc({castID:cd.id})">{{cd.name}}</a>&nbsp;</td><td style="text-align:center">as</td><td style="text-align:left;padding:5px;">{{cd.character}}</td><br/>
+                  </tr>
+                  
+                  
+                </tbody>
+              </table>
+              <a role = "button" ng-click="showcast()" style="float:left">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+              Show all
+              </a><br/>
+              <div class="row" id="show2" style="display:none;">
+                  
+                  
+                  <table border="0">
+                      <th style="text-align:left;font-size:18px;"><b>Name</b></th>
+                      <th style="text-align:left;font-size:18px;"><b>Character</b></th>
+                  <tr ng-repeat="cc in cast" >
+                     
+                      <td style="text-align:left">{{cc.name}}</td>
+                      <td style="text-align:left">{{cc.character}}</td>
+                  </tr>
+              </table>
+              </div><br/>
+              <div class="row">
+              <h4 style="float:left"><b>Genres</b></h4><br/><br/>
+              <div class="col-md-3" ng-repeat="gg in genre">
+                  
+                  
+                  
+                    <div class="btn btn-success">{{gg}}</div>
+              </div>
+                  </div>
+              
+              <br/>
+               <div class="row">
+              <h4 style="float:left"><b>Production Companies</b></h4><br/><br/>
+              <div class="col-md-3" ng-repeat="gg in productioncompanies">
+                  <div>{{gg}}</div>
+              </div>
+                  </div>
+              
+              
+        
+              
+              <!--<table border=1>
+                  <th>Charcter</th>
+                  <th>Name</th>
+                  <tr ng-repeat="c in cast" >
+                     
+                      <td >{{c.character}}</td>
+                      <td >{{c.name}}</td>
+                  </tr>
+              </table>-->
+          </div>
+            
+        </div>
+    </div><br/><h4 style="float:left"><b>Posters</b></h4><br/><br/>
+    <div class="row"><div class="col-md-2"><img class="img-responsive" src="{{imag1}}"/></div><div class="col-md-2"><img class="img-responsive" src="{{imag2}}"/></div><div class="col-md-2"><img class="img-responsive" src="{{imag3}}"/></div><div class="col-md-2"><img class="img-responsive" src="{{imag4}}"/></div><div class="col-md-2"><img class="img-responsive" src="{{imag5}}"/></div><div class="col-md-2"><img class="img-responsive" src="{{imag6}}"/></div></div>
+    <br/><br/><h3 style="float:center"><b>Similar Movies</b></h3><br/>
+    <div ng-repeat="(key, data) in similarMovies">
+        
+        <a href="#" ui-sref="movie_desc({movieID:key})">
+                    {{data}}<br/>
+                </a>
+        
+        
+  
+</div>
+    <br/><br/><h3 style="float:center"><b>TRAILER</b></h3><br/>
+<div ng-repeat="(key, data) in trailers" ng-init='getUrl(key)'>
+        
+             <iframe ng-src= "{{uvar}}" width="800" height="300" allowfullscreen="allowfullscreen">
+               <!--  <iframe ng-src="http://www.youtube.com/embed/{{key}}" width="800" height="300" allowfullscreen="allowfullscreen">-->
+ <p>doesnt support</p>
+</iframe>
+                    
+                
+        
+        
+  
+</div>
+    
+    
+        
+   
+    
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <style>
+    table { 
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+    </style>

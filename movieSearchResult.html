@@ -1,0 +1,39 @@
+<div ng-controller="searchCtrl">
+    
+
+<div class="row">
+    
+    <div>
+        
+        <h1 class="io">Search results</h1>
+        <nav>
+    <ul>
+        <li>
+           <h1>People</h1> 
+        </li>
+        <li><h1>Movies</h1></li>
+        <li><h1>Year</h1></li>
+    </ul>
+</nav>
+            <div style="margin-bottom:30px;"class="col-md-2" ng-repeat="movie in mov">
+                <a href="#" ui-sref="movie_desc({movieID:movie.id})">
+                    <img class="img-responsive" src="{{movie.posterImages.medium}}"/>
+                </a>
+                
+
+                
+            </div>
+            
+        </div>
+    
+    
+    
+    
+    
+    </div>
+</div>
+<style>
+    .wide{}
+    .io{color:beige;background-color: black; width:1170px; height:42px;text-align: center}
+    
+</style>

@@ -1,0 +1,38 @@
+<div ng-controller="curCtrl">
+    <h1>CURRENT MOVIES</h1>
+    <div class="row" ng-repeat="movie in movies" ng-if="$index % 3 == 0">
+    <div>
+        
+            <div class="col-md-3" >
+                <a href="#" ui-sref="movie_desc({movieID:movie.id})">
+                    <span><img class="img-responsive" src="{{movies[$index].posterImages.medium}}"/>{{movies[$index].title}}</span>
+                </a><br/>
+                
+            </div>
+        <div class="col-md-3" >
+                <a href="#" ui-sref="movie_desc({movieID:movie.id})">
+                    <span><img class="img-responsive" src="{{movies[$index+1].posterImages.medium}}"/>{{movies[$index+1].title}}</span>
+                </a><br/>
+                
+            </div>
+        <div class="col-md-3" >
+                <a href="#" ui-sref="movie_desc({movieID:movie.id})">
+                    <span><img class="img-responsive" src="{{movies[$index+2].posterImages.medium}}"/>{{movies[$index+2].title}}</span>
+                </a><br/>
+                
+            </div>
+        <div class="col-md-3" >
+                <a href="#" ui-sref="movie_desc({movieID:movie.id})">
+                    <span><img class="img-responsive" src="{{movies[$index+3].posterImages.medium}}"/>{{movies[$index+3].title}}</span>
+                </a><br/>
+                
+            </div>
+            
+        </div>
+    
+    
+    
+    
+    
+    </div>
+</div>

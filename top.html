@@ -1,0 +1,21 @@
+<div ng-controller="topCtrl">
+    <div class="row">
+    <div>
+        <h1>UPCOMING MOVIES</h1>
+            <div class="col-md-3" ng-repeat="movie in movies">
+                <a href="#" ui-sref="movie_desc({movieID:movie.id})">
+                    <span><img class="img-responsive" src="{{movie.posterImages.medium}}"/><div class="col-md-9">{{movie.title}}</div></span>
+                </a><br/><br/>
+                
+
+                
+            </div>
+            
+        </div>
+    
+    
+    
+    
+    
+    </div>
+</div>

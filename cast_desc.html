@@ -1,0 +1,21 @@
+<div class="jumbotron text-center" ng-controller="castdescCtrl">
+    <div class="row">
+        
+    <div class="col-md-4">
+        <img class="img-responsive" src="{{cas.profileImages.all.full}}"/>
+        <h3>PERSON FACTS</h3><br/>
+        <div style="text-align:left"><b>Popularity :</b> {{cas.popularity}}</div>
+        <div style="text-align:left"><b>Date of Birth :</b> {{cas.birthDay}}</div>
+        <div style="text-align:left"><b>Place of Birth :</b> {{cas.placeOfBirth}}</div>
+        <div style="text-align:left"><b>Adult Actor :</b> {{cas.adult}}</div>
+        <div style="text-align:left"><b>Also Known as :</b>{{cas.alsoKnownAs}}</div>
+        </div>
+        <div class="col-md-8">
+          <div >
+              <h2 style="color:green">{{cas.name}}</h2>
+              <h4 style="float:left"><b>Biography</b></h4><br/><br/>
+              {{cas.biography}}
+              
+    </div>
+    
+</div>

@@ -1,0 +1,110 @@
+<div ng-controller="homeCtrl">
+    
+<div class="row">
+    <div>
+        <h1 class="io">UPCOMING MOVIES</h1>
+            <div class="col-md-2" ng-repeat="movie in movies | limitTo:6">
+                <a href="#" ui-sref="movie_desc({movieID:movie.id})">
+                    <img class="img-responsive" src="{{movie.posterImages.medium}}"/>
+                </a>
+                
+
+                
+            </div>
+            
+        </div><br/>
+        <div style="float:right;margin-top:10px;"><a ui-sref="upcoming"><button type="button" class="btn btn-info">show more</button></a></div>
+    
+    <br/><br/>
+    
+    
+    
+    
+    
+    </div>
+    <div class="row">
+    <div>
+        <h1 class="io">CURRENT MOVIES</h1>
+            <div class="col-md-2" ng-repeat="movie in movies1 | limitTo:6">
+                <a href="#" ui-sref="movie_desc({movieID:movie.id})">
+                    <img class="img-responsive" src="{{movie.posterImages.medium}}"/>
+                </a>
+                
+
+                
+            </div>
+            
+        </div><br/>
+        <div style="float:right;margin-top:10px;"><a ui-sref="current"><button type="button" class="btn btn-info">show more</button></a></div>
+    
+    <br/><br/>
+    
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    <div class="row">
+    <div>
+        <h1 class="io">POPULAR MOVIES</h1>
+            <div class="col-md-2" ng-repeat="movie in movies2 | limitTo:6">
+                <a href="#" ui-sref="movie_desc({movieID:movie.id})">
+                    <img class="img-responsive" src="{{movie.posterImages.medium}}"/>
+                </a>
+                
+
+                
+            </div>
+        
+            
+        </div><br/>
+        <div style="float:right;margin-top:10px;"><a ui-sref="popular"><button type="button" class="btn btn-info">show more</button></a></div>
+    
+    <br/><br/>
+    
+    
+    
+    </div>
+    
+    
+    
+    <div class="row">
+    <div>
+        <h1 class="io">TOP RATED</h1>
+            <div class="col-md-2" ng-repeat="movie in movies3 | limitTo:6">
+                <a href="#" ui-sref="movie_desc({movieID:movie.id})">
+                    <img class="img-responsive" src="{{movie.posterImages.medium}}"/>
+                </a>
+                
+
+                
+            </div>
+        
+            
+        </div><br/>
+        <div style="float:right;margin-top:10px;"><a ui-sref="top"><button type="button" class="btn btn-info">show more</button></a></div>
+    
+    <br/><br/>
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+<style>
+    .wide{}
+    .io{color:beige;background-color: black; width:1170px; height:42px;text-align: center}
+    
+</style>
